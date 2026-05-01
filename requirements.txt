@@ -20,4 +20,5 @@ urllib3==2.5.0
 virtualenv==20.35.4
 gunicorn==21.2.0
 cloudinary==1.41.0
-django-cloudinary-storage==0.3.0
+django-cloudinary-storage==0.3.0            
+whitenoise==6.7.0
