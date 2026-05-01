@@ -18,6 +18,6 @@ sqlparse==0.5.3
 tzdata==2025.2
 urllib3==2.5.0
 virtualenv==20.35.4
-gunicorn
-cloudinary
-django-cloudinary-storage
+gunicorn==21.2.0
+cloudinary==1.41.0
+django-cloudinary-storage==0.3.0
