@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= PORTADA ================= -->
+<div class="portada">
+    {% if ministerio.portada %}
+        <img src="{{ ministerio.portada.url }}" class="img-portada">
+    {% endif %}
+</div>
+
+<!-- ================= PERFIL ================= -->
+<div class="perfil-container">
+
+    {% if ministerio.imagen %}
+        <img 
+            src="{{ ministerio.imagen.url }}" 
+            class="foto-perfil galeria-item"
+            data-img="{{ ministerio.imagen.url }}"
+            alt="Foto de {{ ministerio.nombre }}"
+        >
+    {% endif %}
+
+    <div class="info">
+        <h1>{{ ministerio.nombre }}</h1>
+        <p><strong>Líder:</strong> {{ ministerio.lider }}</p>
+    </div>
+
+</div>
+
+<!-- ================= DESCRIPCIÓN ================= -->
+<div class="descripcion">
+    <p>{{ ministerio.descripcion }}</p>
+</div>
+
+<!-- ================= GALERÍA ================= -->
+<section class="galeria">
+
+    <h2>Galería</h2>
+
+    <div class="galeria-grid">
+
+        {% for foto in fotos %}
+        <div class="galeria-item"
+             data-img="{{ foto.imagen.url }}">
+
+            <img src="{{ foto.imagen.url }}" class="img-galeria">
+
+        </div>
+        {% empty %}
+            <p>No hay fotos aún.</p>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ✅ SOLO UN MODAL -->
+<div id="modal-img" class="modal-img">
+
+    <span id="ev-cerrar">&times;</span>
+
+    <div class="modal-contenido">
+        <img id="ev-img-grande">
+    </div>
+
+</div>
+
+{% endblock %}

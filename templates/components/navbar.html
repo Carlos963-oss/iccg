@@ -1,0 +1,54 @@
+{% load static %}
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo">
+            ICCG
+        </div>
+
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+
+            <li><a href="{% url 'inicio' %}#inicio">Inicio</a></li>
+
+            <li class="dropdown">
+                <a href="#">Nosotros ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'Nuestro_origen'%}#nuestro_origen">Nuestro origen</a></li>
+                    <li><a href="{% url 'Nuestra_casa'%}#nuestra_casa">Nuestra casa</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Ministerios ▾</a>
+                <ul class="dropdown-menu">
+                    {% for m in ministerios %}
+                        <li>
+                            <a href="{% url 'ministerio_detalle' m.id %}">
+                                {{ m.nombre }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+            <li><a href="{% url 'inicio' %}#eventos">Eventos</a></li>
+            <li><a href="{% url 'inicio' %}#ubicacion">Ubicación</a></li>
+
+        </ul>
+
+    </div>
+
+    <!-- 🔥 FRANJA PEGADA AL NAVBAR -->
+    <div class="franja-cuadrangular">
+        <a href="{% url 'color_rojo' %}" class="color rojo"></a>
+        <a href="{% url 'color_amarillo' %}" class="color amarillo"></a>
+        <a href="{% url 'color_azul' %}" class="color azul"></a>   
+        <a href="{% url 'color_morado' %}" class="color morado"></a>
+    </div>
+
+</nav>

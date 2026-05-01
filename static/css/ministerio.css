@@ -1,0 +1,146 @@
+
+/* ================= MINISTERIO ================= */
+
+/* portada */
+.portada img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* perfil */
+.perfil-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: -60px;
+    padding: 0 40px;
+}
+
+/* foto perfil */
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    object-fit: cover;
+
+    background: #fff;
+}
+
+/* descripción */
+.descripcion {
+    padding: 20px 40px;
+    line-height: 1.6;
+}
+
+/* ================= GALERÍA ================= */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 20px 40px;
+}
+
+/* item */
+.galeria-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+
+    position: relative;
+}
+
+/* imagen */
+.galeria-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* hover tipo Instagram */
+.galeria-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.85);
+}
+
+/* overlay suave (opcional pro look) */
+.galeria-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 255, 128, 0);
+    transition: 0.3s ease;
+}
+
+.galeria-item:hover::after {
+    background: rgba(13, 13, 13, 0.15);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .perfil-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .descripcion {
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .galeria-grid {
+        padding: 15px 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .galeria-item img {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= FIX MODAL GALERÍA ================= */
+
+.modal-img.solo-img {
+    background: rgba(0,0,0,0.95); /* más limpio */
+}
+
+/* contenedor SIN layout de eventos */
+.modal-img.solo-img .modal-contenido {
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 90vh;
+
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* imagen FULL (quita el 60%) */
+.modal-img.solo-img .modal-contenido img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* OCULTAR TEXTO SOLO EN GALERÍA */
+.modal-img.solo-img .modal-texto {
+    display: none !important;
+}

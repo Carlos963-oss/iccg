@@ -1,0 +1,100 @@
+/* ================= CONTENEDOR GENERAL ================= */
+
+.color-page {
+    min-height: 100vh;
+    padding: 80px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= ESTRUCTURA INTERNA ================= */
+
+.color-container {
+    max-width: 1100px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* ================= IMAGEN ================= */
+
+.color-img img {
+    width: 300px;
+    border-radius: 15px;
+}
+
+/* ================= TEXTO ================= */
+
+.color-text h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.color-text p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ================= COLORES (SIN CONFLICTO) ================= */
+
+/* 🔴 ROJO */
+.color-page.rojo {
+    background: linear-gradient(135deg, #ffe5e5, #ffffff);
+}
+
+.color-page.rojo h1 {
+    color: #d62828;
+}
+
+/* 🔵 AZUL */
+.color-page.azul {
+    background: linear-gradient(135deg, #e6f0ff, #ffffff);
+}
+
+.color-page.azul h1 {
+    color: #005bbb;
+}
+
+/* 🟡 AMARILLO */
+.color-page.amarillo {
+    background: linear-gradient(135deg, #fff8e1, #ffffff);
+}
+
+.color-page.amarillo h1 {
+    color: #fcbf49;
+}
+
+/* 🟣 MORADO */
+.color-page.morado {
+    background: linear-gradient(135deg, #f3e8ff, #ffffff);
+}
+
+.color-page.morado h1 {
+    color: #6a0dad;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .color-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .color-img img {
+        width: 200px;
+    }
+
+    .color-text h1 {
+        font-size: 28px;
+    }
+
+    .color-text p {
+        font-size: 16px;
+    }
+}

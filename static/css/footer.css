@@ -1,0 +1,135 @@
+/* ================= FOOTER ================= */
+
+.footer {
+    background: linear-gradient(135deg, #1E3A8A, #7C3AED);
+   /* background: #253f72;*/
+    color: white;
+    margin-top: 80px;
+}
+
+/* contenedor principal */
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+/* columnas */
+.footer-col h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer-col p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* enlaces */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul a:hover {
+    color: #005bbb;
+}
+
+/* redes */
+.redes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.redes a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.redes a:hover {
+    color: #005bbb;
+}
+
+/* parte inferior */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ================= BOTÓN WHATSAPP ================= */
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 65px;
+    height: 65px;
+
+    background: #25D366;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+    z-index: 999;
+
+    transition: all 0.3s ease;
+
+    animation: pulse 2s infinite;
+}
+
+/* ICONO */
+.whatsapp-float img {
+    width: 32px;
+    height: 32px;
+}
+
+/* HOVER PRO */
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    animation: none; /* se quita el pulso al pasar mouse */
+}
+
+/* EFECTO PULSO */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}

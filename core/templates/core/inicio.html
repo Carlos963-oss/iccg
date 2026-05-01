@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- ================= HERO ================= -->
+<section id="inicio" class="hero">
+
+    <!-- ===== VIDEO (solo si es video) ===== -->
+    {% if hero and hero.tipo_fondo == 'video' and hero.video %}
+        <video autoplay muted loop playsinline preload="metadata" class="hero-bg video-bg">
+            <source src="{{ hero.video.url }}" type="video/mp4">
+        </video>
+    {% endif %}
+
+    <!-- ===== IMAGEN (siempre existe como fallback) ===== -->
+    <div class="hero-bg hero-img"
+         style="background-image: url('{% if hero and hero.imagen %}{{ hero.imagen.url }}{% else %}{% static "img/22.png" %}{% endif %}');">
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="hero-overlay">
+
+        <!-- LOGO -->
+        <img src="{% static 'img/logo3.svg' %}" alt="ICCG" class="hero-logo">
+
+        <!-- TITULO -->
+        <h1 class="hero-titulo fade-up">
+            Hay un lugar para ti
+        </h1>
+
+        <!-- TEXTO -->
+        <p class="lema fade-up">
+            Te esperamos para vivir una experiencia con Dios
+        </p>
+
+        <!-- UBICACIÓN -->
+        <p class="hero-ubicacion fade-up">
+            📍 Gaira, Santa Marta    
+        </p>
+
+        <!-- BOTONES -->
+        <div class="hero-botones fade-up">
+            <a href="#horarios" class="btn-principal">Ver horarios</a>
+            <a href="#ubicacion" class="btn-secundario">Cómo llegar</a>
+            <a href="#eventos" class="btn-terciario">Ver eventos</a>
+        </div>
+
+    </div>
+
+</section>
+{% if evento and evento.activo and evento.fecha_evento %}
+<section class="evento-countdown">
+
+    <div class="evento-bg">
+        <picture>
+            {% if evento.imagen_movil %}
+                <source media="(max-width: 768px)"
+                        srcset="{{ evento.imagen_movil.url }}">
+            {% endif %}
+            <img src="{{ evento.imagen.url }}" alt="evento">
+        </picture>
+    </div>
+
+    <div class="evento-overlay">
+        <div class="container">
+
+            <div class="evento-card-countdown fade-up">
+
+                <h2 class="titulo-evento">
+                    <span class="small" style="color: {{ evento.color_subtitulo }};">
+                        {{ evento.titulo_superior }}
+                    </span>
+
+                    <span class="big" style="color: {{ evento.color_titulo }};">
+                        {{ evento.titulo_principal }}
+                    </span>
+                </h2>
+
+                <div id="countdown"
+                    data-fecha="{{ evento.fecha_evento|date:'c' }}"
+                    class="countdown">
+
+                    <div class="tiempo">
+                        <span id="dias" style="color: {{ evento.color_contador }};">0</span>
+                        <p>DÍAS</p>
+                    </div>
+
+                    <div class="tiempo">
+                        <span id="horas" style="color: {{ evento.color_contador }};">0</span>
+                        <p>HORAS</p>
+                    </div>
+
+                    <div class="tiempo">
+                        <span id="minutos" style="color: {{ evento.color_contador }};">0</span>
+                        <p>MIN</p>
+                    </div>
+
+                    <div class="tiempo">
+                        <span id="segundos" style="color: {{ evento.color_contador }};">0</span>
+                        <p>SEG</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+{% endif %}
+<!-- ================= EVENTOS ================= -->
+
+{% if eventos_laterales %}
+<section id="eventos" class="eventos-laterales">
+
+    <h2 class="titulo-seccion fade-up">Próximos eventos</h2>
+    <p class="titulo-sub fade-up">Toca una imagen para ver los detalles</p>
+
+    <div class="eventos-container">
+
+        {% for ev in eventos_laterales %}
+        <div class="evento-card fade-up"
+             data-img="{{ ev.imagen.url }}"
+             data-titulo="{{ ev.titulo|escapejs }}"
+             data-desc="{{ ev.descripcion|default_if_none:''|escapejs }}"
+             data-fecha="{{ ev.fecha|date:'d M Y' }}"
+             data-hora="{{ ev.hora|time:'g:i A' }}"
+             data-cat="{{ ev.categoria }}"
+             data-bg="{{ ev.cat_bg }}"
+             data-color="{{ ev.cat_color }}">
+
+            <img src="{{ ev.imagen.url }}" alt="{{ ev.titulo }}" loading="lazy">
+
+            <span class="evento-cat-badge"
+                  style="background:{{ ev.cat_bg }};color:{{ ev.cat_color }};">
+                {{ ev.categoria }}
+            </span>
+
+            <div class="evento-card-overlay">
+                <div class="evento-hover-info">
+                    <div class="evento-hover-title">{{ ev.titulo }}</div>
+                    <div class="evento-hover-date">
+                        <span style="width:6px;height:6px;border-radius:50%;background:{{ ev.cat_dot }};display:inline-block;flex-shrink:0;"></span>
+                        {{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="evento-always-info">
+                <div class="evento-always-title">{{ ev.titulo }}</div>
+                <div class="evento-always-date">{{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}</div>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+{% endif %}
+
+
+<!-- MODAL EVENTOS -->
+<div class="modal-img" id="modal-img" role="dialog" aria-modal="true">
+    <div class="modal-wrap">
+        <span class="cerrar" id="ev-cerrar" aria-label="Cerrar">✕</span>
+        <div class="modal-contenido">
+            <img src="" alt="" id="ev-img-grande">
+            <div class="modal-texto">
+                <div class="modal-cat" id="ev-modal-cat"></div>
+                <div class="modal-titulo" id="ev-modal-titulo"></div>
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        <span id="ev-modal-fecha"></span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6a0dad" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span id="ev-modal-hora"></span>
+                    </div>
+                </div>
+                <div class="modal-desc" id="ev-modal-desc"></div>
+                <a href="#" id="ev-btn-wa" class="btn-whatsapp" target="_blank" rel="noopener">
+                    <svg width="17" height="17" viewBox="0 0 32 32" fill="white">
+                        <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.612 1.832 6.514L4 29l7.697-1.82A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm6.07 16.45c-.254.714-1.49 1.366-2.046 1.452-.524.082-1.183.116-1.907-.119-.44-.14-1.004-.327-1.728-.64-3.042-1.312-5.024-4.37-5.175-4.572-.152-.204-1.235-1.643-1.235-3.134 0-1.49.78-2.223 1.057-2.526.278-.304.605-.38.807-.38l.578.01c.186.009.435-.07.68.52.254.608.866 2.093.941 2.245.076.152.126.33.026.532-.1.203-.152.33-.304.508-.152.177-.32.396-.457.53-.153.152-.312.316-.134.62.178.304.79 1.303 1.696 2.11 1.164 1.04 2.147 1.36 2.451 1.514.304.152.48.127.658-.077.178-.203.76-.887.963-1.19.203-.304.406-.254.68-.152.278.101 1.762.83 2.065.982.304.152.507.228.583.355.076.127.076.735-.178 1.448z"/>
+                    </svg>
+                    Quiero asistir
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= BIENVENIDA ================= -->
+
+<section class="bienvenida">
+
+    <div class="bienvenida-container">
+
+        <h2 class="fade-up">Bienvenidos a ICCG</h2>
+
+        <p class="bienvenida-texto fade-up">
+            Somos la Iglesia Cristiana Cuadrangular de Gaira, un lugar donde
+            creemos en el poder transformador de Jesucristo.
+        </p>
+
+        <div class="bienvenida-cards">
+
+            <div class="card fade-up">
+                <h3>Nuestra fe</h3>
+                <p>
+                    Creemos en Jesucristo como Salvador, Sanador,
+                    Bautizador con el Espíritu Santo y Rey que pronto vendrá.
+                </p>
+            </div>
+
+            <div class="card fade-up">
+                <h3>Nuestra comunidad</h3>
+                <p>
+                    Somos una familia espiritual donde cada persona es bienvenida.
+                </p>
+            </div>
+
+            <div class="card fade-up">
+                <h3>Nuestra misión</h3>
+                <p>
+                    Compartir el evangelio y formar vidas transformadas.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UBICACIÓN ================= -->
+
+<section id="ubicacion" class="ubicacion">
+
+    <div class="ubicacion-container">
+
+        <p class="subtitulo">ICCG</p>
+        <h2 class="fade-up">Nuestra ubicación</h2>
+
+        <div class="ubicacion-card fade-up">
+
+            <div class="icono">📍</div>
+
+            <h3>Iglesia Cristiana Cuadrangular de Gaira</h3>
+            <p>Gaira, Santa Marta, Colombia</p>
+
+            <a href="https://www.google.com/maps?q=Gaira+Santa+Marta"
+               target="_blank"
+               class="btn-maps">
+                Abrir en Google Maps →
+            </a>
+
+        </div>
+
+        <div class="mapa fade-up">
+            <iframe 
+                src="https://www.google.com/maps?q=Gaira+Santa+Marta&output=embed"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HORARIOS ================= -->
+
+<section id="horarios" class="horarios">
+
+    <div class="container">
+
+        <h2 class="titulo-horarios fade-up">Nuestros horarios</h2>
+
+        <div class="horarios-grid">
+
+            {% for tipo, lista in horarios_agrupados.items %}
+
+            <div class="horario-card fade-up">
+
+                <h3 class="tipo-servicio">
+                    {{ tipo }}
+                </h3>
+
+                {% for h in lista %}
+                <div class="horario-item">
+
+                    <span class="dia">
+                        {{ h.get_dia_display }}
+                    </span>
+
+                    <span class="hora">
+                        {{ h.hora }}
+                    </span>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

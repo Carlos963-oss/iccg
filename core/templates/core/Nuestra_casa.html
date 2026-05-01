@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="historia-section">
+
+    <h1 class="titulo-principal">Nuestra Casa</h1>
+
+    <!-- BLOQUE 1 -->
+    <div class="historia-row">
+        <div class="texto">
+            <span class="tag">IGLESIA LOCAL</span>
+            <h2>Nuestra historia en Gaira</h2>
+            <p>
+                La Iglesia Cristiana Cuadrangular de Gaira nace como una respuesta
+                al llamado de Dios en esta comunidad, llevando esperanza y restauración
+                a muchas vidas.
+            </p>
+        </div>
+
+        <div class="imagen">
+            <img src="{% static 'img/iglesia.svg' %}" alt="Iglesia local">
+        </div>
+    </div>
+
+    <!-- BLOQUE 2 -->
+    <div class="historia-row reverse">
+        <div class="texto">
+            <span class="tag">PASTORES</span>
+            <h2>Un liderazgo con propósito</h2>
+            <p>
+                Dios ha levantado pastores comprometidos con la enseñanza de la palabra,
+                guiando a la iglesia con amor, visión y dirección espiritual.
+            </p>
+        </div>
+
+        <div class="imagen">
+            <img src="{% static 'img/pastores.jpg' %}" alt="Pastores">
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

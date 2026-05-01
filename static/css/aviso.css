@@ -1,0 +1,127 @@
+/* ================= MODAL FONDO ================= */
+
+.aviso-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+/* ================= CONTENIDO ================= */
+
+.aviso-contenido {
+    width: 90%;
+    max-width: 450px;
+
+    padding: 35px 25px;
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+    animation: aparecer 0.4s ease;
+}
+
+/* animación */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ================= ICONO ================= */
+
+.aviso-icono {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ================= TEXTO ================= */
+
+.aviso-contenido h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.aviso-contenido p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* ================= BOTON ================= */
+
+.aviso-contenido button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.aviso-contenido button:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= TIPOS ================= */
+
+/* 🔴 URGENTE */
+.aviso-urgente {
+    background: #ffe5e5;
+    color: #7a0000;
+}
+
+.aviso-urgente button {
+    background: #d62828;
+    color: white;
+}
+
+/* 🟡 IMPORTANTE */
+.aviso-importante {
+    background: #fff8e1;
+    color: #7a5c00;
+}
+
+.aviso-importante button {
+    background: #fcbf49;
+    color: black;
+}
+
+/* 🟢 INFORMATIVO */
+.aviso-informativo {
+    background: #e6f9f0;
+    color: #065f46;
+}
+
+.aviso-informativo button {
+    background: #20c997;
+    color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 500px) {
+    .aviso-contenido {
+        padding: 25px 15px;
+    }
+
+    .aviso-contenido h2 {
+        font-size: 20px;
+    }
+
+    .aviso-contenido p {
+        font-size: 14px;
+    }
+}

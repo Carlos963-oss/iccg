@@ -1,0 +1,1029 @@
+/* ===== RESET GENERAL ===== */
+/* ================= CONTAINER GLOBAL ================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero {
+    height: 100vh;
+    background-image: url("/static/img/22.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* OVERLAY */
+.hero-overlay {
+    position: relative;
+    background:#6a0dad52;
+    backdrop-filter: blur(8px);
+    padding: 80px 40px 40px;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    max-width: 750px;
+}
+
+/* LOGO SALIDO */
+.hero-logo {
+    position: absolute;
+    top: -160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6)) 
+            drop-shadow(0 0 25px rgba(0,0,0,0.4));
+
+}
+
+/* TITULO */
+.hero-titulo {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+.lema {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* HORARIOS */
+.hero-horarios {
+    margin: 20px 0;
+}
+
+.horario {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.dia {
+    font-weight: 700;
+}
+
+/* COLORES POR DIA */
+.dia.domingo { color: #f5c542; }
+.dia.lunes { color: #4dabf7; }
+.dia.martes { color: #69db7c; }
+.dia.miercoles { color: #ff922b; }
+.dia.jueves { color: #845ef7; }
+.dia.viernes { color: #ff6b6b; }
+.dia.sabado { color: #20c997; }
+
+/* UBICACION */
+.hero-ubicacion {
+    margin-top: 10px;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+/* BOTONES */
+.hero-botones {
+    margin-top: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px;
+    justify-content: center;
+}
+
+/* botón grande arriba */
+.btn-principal {
+    grid-column: 1 / 3; /* ocupa las 2 columnas */
+    justify-self: center;
+}
+
+/* estilo base botones */
+.btn-principal,
+.btn-secundario,
+.btn-terciario {
+    border: 1px solid #fff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+/* hover opcional */
+.btn-principal:hover,
+.btn-secundario:hover,
+.btn-terciario:hover {
+    transform: translateY(-2px);
+}
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: rgb(255, 255, 255);
+    width: 100%;
+   /* box-shadow: 0 2px 8px rgb(239, 0, 0);*/
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #005bbb;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #005bbb;
+}
+
+/* ================= DROPDOWN NAVBAR ================= */
+
+.nav-links li {
+    position: relative;
+}
+
+/* LINK PADRE */
+.dropdown > a {
+    cursor: pointer;
+}
+
+/* MENÚ OCULTO */
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    left: 0;
+
+    background: white;
+    border-radius: 12px;
+
+    min-width: 200px;
+    padding: 10px 0;
+
+    list-style: none;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+
+    /* animación */
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+/* ITEMS */
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+/* LINKS */
+.dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+/* HOVER ITEM */
+.dropdown-menu li:hover {
+    background: #f4f6f9;
+}
+
+/* ================= HOVER DESKTOP ================= */
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ================= MÓVIL ================= */
+
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    display: block;
+}
+
+/* ================= FRANJA CUADRANGULAR ================= */
+
+.franja-cuadrangular {
+    display: flex;
+    width: 100%;
+    height: 8px;
+}
+
+.franja-cuadrangular .color {
+    flex: 1;
+    transition: 0.3s;
+}
+
+.azul { background: #005bbb; }
+.rojo { background: #d62828; }
+.amarillo { background: #fcbf49; }
+.morado { background: #6a0dad; }
+
+.franja-cuadrangular .color:hover {
+    height: 14px;
+}
+
+/* ================= BIENVENIDA ================= */
+
+.bienvenida {
+    background:#6a0dad;/* fondo cuadro grande de la bienvenida*/
+    padding: 80px 20px;
+}
+
+.bienvenida-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.bienvenida h2 {
+    font-size: 36px;
+    color: #ffffff;/* titulo de bienvenida*/
+    margin-bottom: 20px;
+}
+
+.bienvenida-texto {
+    font-size: 18px;
+    color: #ffffff; /* texto grande de bienvenida*/
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 1.6;
+}
+
+.bienvenida-cards {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #6a0dad; /* color de titulo dentro de las cards*/
+}
+
+.card p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ================= EVENTO COUNTDOWN ================= */
+
+.evento-countdown {
+    margin-top: 15px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 450px;
+    padding: 80px 20px;
+
+    position: relative;
+
+    animation: zoomBg 20s ease-in-out infinite alternate;
+}
+
+/* overlay oscuro */
+.evento-countdown::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+/* animación fondo */
+@keyframes zoomBg {
+    from {
+        background-size: 100%;
+    }
+    to {
+        background-size: 110%;
+    }
+}
+
+/* contenedor centrado */
+.evento-overlay {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* CARD DEL CONTADOR */
+.evento-card-countdown {
+    width: 95%;
+    max-width: 1000px; /* 🔥 más ancho */
+
+    padding: 50px 40px; /* más aire */
+
+    border-radius: 30px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(6px);
+
+    text-align: center;
+    color: white;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* TITULO */
+.titulo-evento {
+    margin-bottom: 20px;
+}
+
+.titulo-evento .small {
+    display: block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #cbf5e4;
+}
+.titulo-evento .big {
+    font-size: 42px; 
+    font-weight: 900;
+    color: #f6ff00;
+}
+
+/* CONTADOR ORDENADO */
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* CAJAS */
+.tiempo {
+    background: rgba(0,0,0,0.7);
+
+    padding: 20px 15px;
+    border-radius: 12px;
+}
+
+/* NUMEROS */
+.tiempo span {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.tiempo p {
+    font-size: 12px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .titulo-evento .big {
+        font-size: 22px;
+    }
+}
+/* ================= EVENTOS LATERALES ================= */
+
+.eventos-laterales {
+    padding: 80px 20px;
+    background: white;
+}
+
+.eventos-container {
+    max-width: 900px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* CUADROS PERFECTOS */
+.evento-card {
+    width: 320px;
+    height: 320px;
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    transition: transform 0.35s ease;
+}
+
+.evento-card:hover {
+    transform: scale(1.05);
+}
+
+/* overlay hover */
+.evento-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,0.85)
+    );
+    color: white;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+}
+
+.evento-card:hover .evento-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== TITULO SECCION EVENTOS ===== */
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 36px;
+    color: #005bbb;
+    margin-bottom: 50px;
+    font-weight: bold;
+    position: relative;
+}
+
+.titulo-seccion::after {
+    content: "";
+    width: 120px; 
+    height: 4px;
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 2px;
+
+    background: linear-gradient(
+        to right,
+        #005bbb 25%,   /* azul*/
+        #d62828 25%,   /* rojo */
+        #d62828 50%,   /* rojo */
+        #fcbf49 50%,   /* amarillo */
+        #fcbf49 75%,    /* amarillo*/
+        #6a0dad 75%    /* morado */
+    );
+}
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #253f72;
+    color: white;
+    margin-top: 80px;
+}
+
+/* contenedor principal */
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+/* columnas */
+.footer-col h3 {
+    color: #005bbb;
+    margin-bottom: 15px;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer-col p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* enlaces */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul a:hover {
+    color: #005bbb;
+}
+
+/* redes */
+.redes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.redes a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.redes a:hover {
+    color: #005bbb;
+}
+
+/* parte inferior */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ================= BOTÓN WHATSAPP ================= */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 65px;
+    height: 65px;
+
+    background: #25D366;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    z-index: 9999;
+
+    transition: 0.3s ease;
+}
+
+/* imagen */
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+
+/* hover elegante */
+.whatsapp-float:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* ================= UBICACIÓN ================= */
+
+.ubicacion {
+    background: #f4f6f9;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.ubicacion-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* subtitulo */
+.subtitulo {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+/* titulo */
+.ubicacion h2 {
+    font-size: 38px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+
+/* CARD NEGRA */
+.ubicacion-card {
+    background: #0f172a;
+    color: white;
+    padding: 40px;
+    border-radius: 18px;
+    margin-bottom: 40px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.icono {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.ubicacion-card h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.ubicacion-card p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+/* BOTÓN */
+.btn-maps {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-maps:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* MAPA */
+.mapa {
+    margin-top: 20px;
+}
+
+.mapa iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 14px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* ================= NAVBAR ================= */
+/* tu código actual */
+
+/* ================= HERO ================= */
+/* tu código actual */
+
+/* ================= MINISTERIO (NUEVO) ================= */
+
+.portada img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.perfil-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: -60px;
+    padding: 0 40px;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+}
+
+.descripcion {
+    padding: 20px 40px;
+}
+
+.galeria {
+    padding: 40px;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+/* ================= GALERÍA ================= */
+
+.galeria {
+    padding: 40px;
+}
+
+.galeria h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+/* ITEM */
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* IMAGEN */
+.galeria-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+/* OVERLAY */
+.galeria-item::after {
+    content: "👁 Ver";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,0.4);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    opacity: 0;
+
+    transition: 0.3s;
+}
+
+/* HOVER */
+.galeria-item:hover::after {
+    opacity: 1;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.1);
+}
+
+
+/* ================= TITULO PRINCIPAL ================= */
+
+.titulo-principal {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 80px;
+    color: #005bbb;
+    font-weight: 900;
+}
+
+/* ================= SECCIÓN GENERAL ================= */
+
+.historia-section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 20px;
+}
+
+/* ================= FILAS ================= */
+
+.historia-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+/* invertir orden */
+.historia-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* ================= TEXTO ================= */
+
+.historia-row .texto {
+    flex: 1;
+}
+
+/* etiqueta pequeña tipo categoría */
+.tag {
+    font-size: 12px;
+    color: #6a0dad;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* título */
+.historia-row h2 {
+    font-size: 30px;
+    margin: 10px 0 20px;
+    color: #111;
+}
+
+/* párrafo */
+.historia-row p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* lista */
+.historia-row ul {
+    padding-left: 20px;
+}
+
+.historia-row li {
+    margin-bottom: 6px;
+    color: #444;
+}
+
+/* ================= IMAGEN ================= */
+
+.historia-row .imagen {
+    flex: 1;
+}
+
+.historia-row img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* ================= EFECTO HOVER SUTIL ================= */
+
+.historia-row img:hover {
+    transform: scale(1.03);
+    transition: 0.4s ease;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .historia-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .historia-row.reverse {
+        flex-direction: column;
+    }
+
+    .historia-row img {
+        height: 250px;
+    }
+
+    .titulo-principal {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .historia-row h2 {
+        font-size: 22px;
+    }
+
+    .historia-row p {
+        font-size: 15px;
+    }
+}
+
+/* ================= HORARIOS (NUEVO) ================= */
+
+.horarios {
+    padding: 100px 20px;
+    background: #ffffff;
+}
+
+.horarios .container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+/* título */
+.titulo-horarios {
+    font-size: 36px;
+    font-weight: 900;
+    color: #005bbb;
+    margin-bottom: 50px;
+}
+
+/* grid */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* card */
+.horario-card {
+    background: #0f172a;
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.horario-card:hover {
+    transform: translateY(-5px);
+}
+
+/* título del tipo de servicio */
+.tipo-servicio {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #f6ff00;
+}
+
+/* items */
+.horario-item {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #e5e7eb;
+}
+
+/* día resaltado */
+.horario-item .dia {
+    font-weight: bold;
+    color: #38bdf8;
+}

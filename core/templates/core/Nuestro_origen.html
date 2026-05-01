@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="historia-section">
+
+    <h1 class="titulo-principal">Nuestro Origen</h1>
+
+    <!-- BLOQUE 1 -->
+    <div class="historia-row">
+        <div class="texto">
+            <span class="tag">INICIO</span>
+            <h2>Donde todo comenzó</h2>
+            <p>
+                La Iglesia Cuadrangular nace como una visión dada por Dios
+                a Aimee Semple McPherson, con el propósito de predicar el evangelio
+                de Jesucristo a todas las naciones.
+            </p>
+
+            <ul>
+                <li>1923 - Fundación del movimiento</li>
+                <li>Expansión a nivel mundial</li>
+                <li>Consolidación de la doctrina</li>
+            </ul>
+        </div>
+
+        <div class="imagen">
+            <img src="{% static 'img/aimee.jpg' %}" alt="Aimee McPherson">
+        </div>
+    </div>
+
+    <!-- BLOQUE 2 -->
+    <div class="historia-row reverse">
+        <div class="texto">
+            <span class="tag">CRECIMIENTO</span>
+            <h2>Un movimiento que impacta naciones</h2>
+            <p>
+                Con el paso de los años, la iglesia se extendió a múltiples países,
+                llevando un mensaje de salvación, sanidad, bautismo en el Espíritu Santo
+                y la segunda venida de Cristo.
+            </p>
+        </div>
+
+        <div class="imagen">
+            <img src="{% static 'img/bandera iccg.png' %}" alt="Bandera Cuadrangular">
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- RESPONSIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description" content="Iglesia Cristiana Cuadrangular de Gaira. Un lugar donde Jesús transforma vidas.">
+
+    <!-- COLOR APP -->
+    <meta name="theme-color" content="#6a0dad">
+
+    <title>ICCG</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bienvenida.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ubicacion.css' %}">
+    <link rel="stylesheet" href="{% static 'css/horario.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/info.css' %}">
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ministerio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aviso.css' %}">
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (YA INCLUYE LA FRANJA) -->
+{% include 'components/navbar.html' %}
+
+<!-- AVISO -->
+{% if aviso %}
+<div id="aviso-modal" class="aviso-modal">
+    <div class="aviso-contenido aviso-{{ aviso.tipo }}">
+
+        <div class="aviso-icono">
+            {% if aviso.tipo == "urgente" %}⚠️{% endif %}
+            {% if aviso.tipo == "importante" %}🔔{% endif %}    
+            {% if aviso.tipo == "informativo" %}ℹ️{% endif %}
+        </div>
+
+        <h2>{{ aviso.titulo }}</h2>
+        <p>{{ aviso.mensaje }}</p>
+
+        <button id="btn-aviso">{{ aviso.texto_boton }}</button>
+
+    </div>
+</div>
+{% endif %}
+
+<!-- CONTENIDO -->
+<main class="main-content">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container container">
+
+        <div class="footer-col">
+            <h3>ICCG Gaira</h3>
+            <p>
+                Iglesia Cristiana Cuadrangular de Gaira.
+                Un lugar donde Jesús transforma vidas
+                y renueva la esperanza.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="{% url 'inicio' %}#inicio">Inicio</a></li>
+                <li><a href="{% url 'inicio' %}#eventos">Eventos</a></li>
+                <li><a href="{% url 'inicio' %}#ministerios">Ministerios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <p>📍 Gaira, Santa Marta</p>
+            <p>📞 +57 300 000 0000</p>
+            <p>✉ iccgaira@email.com</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="redes">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 ICCG Gaira — Todos los derechos reservados</p>
+    </div>
+
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/573000000000"
+   class="whatsapp-float"
+   target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" loading="lazy">
+</a>
+
+<!-- MODAL -->
+<div id="modal-img" class="modal-img">
+    <span class="cerrar">✖</span>
+
+    <div class="modal-contenido">
+        <img id="img-grande">
+
+        <div class="modal-texto">
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-desc"></p>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="{% static 'js/countdown.js' %}"></script>
+<script src="{% static 'js/admin_datetime.js' %}"></script>
+
+</body>
+</html>

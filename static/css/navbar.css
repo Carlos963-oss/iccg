@@ -1,0 +1,202 @@
+/* ================= NAVBAR BASE ================= */
+
+.navbar {
+    background: white;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* 🔥 base alta */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ================= LOGO ================= */
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #005bbb;
+}
+
+/* ================= LINKS ================= */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #005bbb;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* 🔥 efecto moderno */
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 12px;
+
+    min-width: 200px;
+    padding: 10px 0;
+
+    list-style: none;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: 0.3s ease;
+
+    z-index: 2000; /* 🔥 SOLUCIÓN CLAVE */
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu a {
+    color: #333;
+    font-size: 14px;
+}
+
+/* HOVER DESKTOP */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ================= HAMBURGUESA ================= */
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* ================= MÓVIL ================= */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-container {
+        padding: 15px 20px 5px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0;
+        padding: 10px 0;
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height 0.3s ease;
+        z-index: 1500; /* 🔥 más alto que franja */
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        position: relative;
+        z-index: 1501;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    /* DROPDOWN MÓVIL */
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+
+        backdrop-filter: none;
+
+        transition: max-height 0.3s ease;
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 300px;
+        padding: 10px 0;
+    }
+
+    /* 🔥 FRANJA PEGADA */
+    .franja-cuadrangular {
+        margin-top: 0;
+    }
+}
+
+/* ================= FRANJA CUADRANGULAR ================= */
+
+.franja-cuadrangular {
+    display: flex;
+    width: 100%;
+    height: 8px;
+
+    position: relative;
+    z-index: 1; /* 🔥 BAJITA, no molesta */
+}
+
+.franja-cuadrangular .color {
+    flex: 1;
+    transition: 0.3s;
+}
+
+.franja-cuadrangular .azul { background: #005bbb; }
+.franja-cuadrangular .rojo { background: #d62828; }
+.franja-cuadrangular .amarillo { background: #fcbf49; }
+.franja-cuadrangular .morado { background: #6a0dad; }
+
+/* EFECTO HOVER */
+.franja-cuadrangular .color:hover {
+    height: 14px;
+}

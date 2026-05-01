@@ -1,0 +1,8 @@
+Hero imagen grande: 1920 x 1080 px  (Full HD) jpg
+hero logo: 300 x 300 px  (cuadrado) png
+evento destacado 1200 x 700 px jpg
+evento laterales: 600 x 600 px jpg
+galería: 800 x 600 px jpg 
+ministerios portada: 1200 x 400 px jpg
+perfil ministerios: 400 x 400 px jpg
+

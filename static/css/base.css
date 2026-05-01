@@ -1,0 +1,85 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* MAIN */
+.main-content {
+    min-height: 80vh;
+}
+
+/* COLORES */
+:root {
+    --color-azul: #005bbb;
+    --color-rojo: #d62828;
+    --color-amarillo: #fcbf49;
+    --color-morado: #6a0dad;
+}
+
+/* TIPOGRAFÍA RESPONSIVE */
+h1 { font-size: clamp(24px, 5vw, 42px); }
+h2 { font-size: clamp(20px, 4vw, 32px); }
+p  { font-size: clamp(14px, 2.5vw, 16px); }
+
+/* SECCIONES */
+section {
+    padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* IMÁGENES */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* BOTONES */
+.btn-principal,
+.btn-secundario,
+.btn-terciario {
+    border: 1px solid #fff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-principal:hover,
+.btn-secundario:hover,
+.btn-terciario:hover {
+    transform: translateY(-2px);
+}
+
+/* BOTONES MOBILE */
+@media (max-width: 768px) {
+    .btn-principal,
+    .btn-secundario,
+    .btn-terciario {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,571 @@
+/* ================= EVENTO COUNTDOWN ================= */
+
+.evento-countdown {
+    margin-top: 15px;
+    min-height: 450px;
+    padding: clamp(60px, 8vw, 100px) 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== FONDO ===== */
+.evento-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.evento-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: zoomBg 20s ease-in-out infinite alternate;
+}
+
+/* ===== OVERLAY ===== */
+.evento-countdown::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.75)
+    );
+
+    z-index: 1;
+}
+
+@keyframes zoomBg {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+}
+
+/* ===== CONTENIDO ===== */
+.evento-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.evento-overlay .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== CARD ===== */
+.evento-card-countdown {
+    width: min(900px, 92%);
+    margin: 0 auto;
+
+    border-radius: 25px;
+
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
+    color: white;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+
+    padding: clamp(25px, 5vw, 45px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================= TITULO ================= */
+
+.titulo-evento {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.titulo-evento .small {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.85;
+}
+
+.titulo-evento .big {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 900;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ================= CONTADOR ================= */
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+
+    justify-items: center;
+}
+
+/* 🔥 FIX CLAVE: cuando el grid se convierte en mensaje final */
+#countdown:has(.evento-finalizado) {
+    display: block !important;
+    grid-template-columns: none !important;
+    max-width: 100%;
+}
+
+.tiempo {
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    padding: 18px 10px;
+    border-radius: 12px;
+}
+
+.tiempo span {
+    display: block;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: bold;
+}
+
+.tiempo p {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* ================= EVENTO FINALIZADO ================= */
+
+.evento-finalizado {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px;
+
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.15;
+    text-shadow: 0 6px 25px rgba(0,0,0,0.7);
+
+    /* Escala automático — nunca se parte en PC */
+    font-size: clamp(16px, 5vw, 48px);
+    letter-spacing: clamp(0.5px, 0.3vw, 2px);
+    white-space: nowrap;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* 💻 PC */
+@media (min-width: 1024px) {
+    .evento-card-countdown {
+        min-width: 650px;
+    }
+
+    .evento-finalizado {
+        font-size: clamp(32px, 3.5vw, 48px);
+    }
+}
+
+/* 📲 TABLET */
+@media (max-width: 768px) {
+
+    .evento-card-countdown {
+        padding: 25px 20px;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 320px;
+    }
+
+    .evento-finalizado {
+        white-space: normal;
+        font-size: clamp(18px, 5.5vw, 28px);
+        word-break: keep-all;
+        overflow-wrap: normal;
+    }
+}
+
+/* 📱 CELULAR */
+@media (max-width: 480px) {
+
+    .evento-card-countdown {
+        padding: 20px 15px;
+    }
+
+    .evento-finalizado {
+        font-size: clamp(16px, 5vw, 22px);
+        letter-spacing: 0.5px;
+        word-break: keep-all;
+    }
+}
+
+/* 📱 MUY PEQUEÑOS */
+@media (max-width: 400px) {
+
+    .tiempo span {
+        font-size: 18px;
+    }
+
+    .evento-finalizado {
+        font-size: clamp(14px, 4.5vw, 18px);
+    }
+}
+/* ================= EVENTOS LATERALES ================= */
+
+.eventos-laterales {
+    padding: 80px 20px;
+    background: #fafafa;
+}
+
+.titulo-sub {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 2rem;
+    margin-top: -30px;
+}
+
+
+.eventos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 12px;
+    max-width: 700px; 
+    margin: 0 auto;
+    justify-content: center;
+}
+
+/* ================= TARJETAS ================= */
+
+.evento-card {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    background: #e0e0e0;
+
+    border-radius: 12px; /* más moderno */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 320px;  
+    margin: 0 auto;
+}
+
+.evento-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.evento-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.evento-card:hover img {
+    transform: scale(1.06);
+}
+
+/* ================= OVERLAY ================= */
+
+.evento-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+}
+
+.evento-card:hover .evento-card-overlay {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* INFO HOVER */
+.evento-hover-info {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.evento-card:hover .evento-hover-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.evento-hover-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.evento-hover-date {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ================= MÓVIL ================= */
+
+.evento-always-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    display: none;
+}
+
+.evento-always-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.evento-always-date {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 2px;
+}
+
+@media (hover: none) {
+    .evento-hover-info    { display: none !important; }
+    .evento-card-overlay  { background: rgba(0,0,0,0) !important; }
+    .evento-always-info   { display: block !important; }
+}
+
+/* ================= BADGE ================= */
+
+.evento-cat-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+}
+
+/* ================= MODAL ================= */
+
+.modal-img {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.modal-img.active {
+    display: flex;
+}
+
+.modal-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+}
+
+.modal-contenido {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-contenido > img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.modal-texto {
+    padding: 1.2rem 1.3rem 1.3rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    color: #111;
+    width: 100%;
+}
+
+.modal-cat {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.modal-titulo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.modal-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #555;
+}
+
+.modal-desc {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* BOTÓN */
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25d366;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    width: 100%;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* CERRAR */
+.cerrar {
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #fff;
+    z-index: 10;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    .eventos-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        max-width: 520px;
+        justify-items: center; /* 🔥 centra */
+    }
+}
+
+@media (max-width: 480px) {
+    .eventos-container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box; /* 🔥 evita overflow por el padding */
+        justify-items: center;  /* 🔥 centra los hijos dentro del grid */
+    }
+
+    .evento-card {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .modal-contenido > img {
+        aspect-ratio: 4/3;
+    }
+}
+
+/* ================= TITULO ================= */
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 38px;
+    color: #6a0dad;
+    margin-bottom: 50px;
+    font-weight: bold;
+    position: relative;
+}
+
+.titulo-seccion::after {
+    content: "";
+    width: 140px;
+    height: 4px;
+    display: block;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(
+        to right,
+        #d62828 25%,
+        #fcbf49 50%,
+        #005bbb 75%,
+        #6a0dad 100%
+    );
+}
