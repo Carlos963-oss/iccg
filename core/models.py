@@ -167,9 +167,13 @@ class Hero(models.Model):
     ]
 
     tipo_fondo = models.CharField(max_length=10, choices=TIPO_FONDO, default='imagen')
-
-    imagen = CloudinaryField(verbose_name="para moviles")  # 🔥 cambiado
-    video = models.FileField(upload_to='hero/videos/', blank=True, null=True, verbose_name="para pc")
+    imagen = CloudinaryField(verbose_name="para moviles")
+    video = CloudinaryField(
+        resource_type='video',
+        blank=True,
+        null=True,
+        verbose_name="Video PC"
+    )
 
     activo = models.BooleanField(default=True)
     fecha = models.DateTimeField(auto_now_add=True)
