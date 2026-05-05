@@ -569,3 +569,20 @@
         #6a0dad 100%
     );
 }
+
+.sin-eventos {
+    text-align: center;
+    padding: 40px 20px;
+    color: #555;
+}
+
+.sin-eventos p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.sin-eventos span {
+    font-size: 15px;
+    opacity: 0.7;
+}

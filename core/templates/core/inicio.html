@@ -112,55 +112,60 @@
 </section>
 {% endif %}
 <!-- ================= EVENTOS ================= -->
-
-{% if eventos_laterales %}
+!-- ================= EVENTOS ================= -->
 <section id="eventos" class="eventos-laterales">
 
     <h2 class="titulo-seccion fade-up">Próximos eventos</h2>
-    <p class="titulo-sub fade-up">Toca una imagen para ver los detalles</p>
 
-    <div class="eventos-container">
+    {% if eventos_laterales %}
+        <p class="titulo-sub fade-up">Toca una imagen para ver los detalles</p>
+        <div class="eventos-container">
+            {% for ev in eventos_laterales %}
+            <div class="evento-card fade-up"
+                 data-img="{{ ev.imagen.url }}"
+                 data-titulo="{{ ev.titulo|escapejs }}"
+                 data-desc="{{ ev.descripcion|default_if_none:''|escapejs }}"
+                 data-fecha="{{ ev.fecha|date:'d M Y' }}"
+                 data-hora="{{ ev.hora|time:'g:i A' }}"
+                 data-cat="{{ ev.categoria }}"
+                 data-bg="{{ ev.cat_bg }}"
+                 data-color="{{ ev.cat_color }}">
 
-        {% for ev in eventos_laterales %}
-        <div class="evento-card fade-up"
-             data-img="{{ ev.imagen.url }}"
-             data-titulo="{{ ev.titulo|escapejs }}"
-             data-desc="{{ ev.descripcion|default_if_none:''|escapejs }}"
-             data-fecha="{{ ev.fecha|date:'d M Y' }}"
-             data-hora="{{ ev.hora|time:'g:i A' }}"
-             data-cat="{{ ev.categoria }}"
-             data-bg="{{ ev.cat_bg }}"
-             data-color="{{ ev.cat_color }}">
+                <img src="{{ ev.imagen.url }}" alt="{{ ev.titulo }}" loading="lazy">
 
-            <img src="{{ ev.imagen.url }}" alt="{{ ev.titulo }}" loading="lazy">
+                <span class="evento-cat-badge"
+                      style="background:{{ ev.cat_bg }};color:{{ ev.cat_color }};">
+                    {{ ev.categoria }}
+                </span>
 
-            <span class="evento-cat-badge"
-                  style="background:{{ ev.cat_bg }};color:{{ ev.cat_color }};">
-                {{ ev.categoria }}
-            </span>
-
-            <div class="evento-card-overlay">
-                <div class="evento-hover-info">
-                    <div class="evento-hover-title">{{ ev.titulo }}</div>
-                    <div class="evento-hover-date">
-                        <span style="width:6px;height:6px;border-radius:50%;background:{{ ev.cat_dot }};display:inline-block;flex-shrink:0;"></span>
-                        {{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}
+                <div class="evento-card-overlay">
+                    <div class="evento-hover-info">
+                        <div class="evento-hover-title">{{ ev.titulo }}</div>
+                        <div class="evento-hover-date">
+                            <span style="width:6px;height:6px;border-radius:50%;background:{{ ev.cat_dot }};display:inline-block;flex-shrink:0;"></span>
+                            {{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="evento-always-info">
-                <div class="evento-always-title">{{ ev.titulo }}</div>
-                <div class="evento-always-date">{{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}</div>
-            </div>
+                <div class="evento-always-info">
+                    <div class="evento-always-title">{{ ev.titulo }}</div>
+                    <div class="evento-always-date">{{ ev.fecha|date:"d M Y" }} · {{ ev.hora|time:"g:i A" }}</div>
+                </div>
 
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
 
-    </div>
+    {% else %}
+            <div class="sin-eventos fade-up">
+                <p>En este momento no hay eventos programados</p>
+                <span>Si estás atento, serás el primero en enterarte</span>
+            </div>
+    {% endif %}
 
 </section>
-{% endif %}
+
 
 
 <!-- MODAL EVENTOS -->
