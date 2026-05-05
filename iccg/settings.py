@@ -153,4 +153,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
 ]
 
+import cloudinary
+
+cloudinary.config(
+    secure=True
+)
 
