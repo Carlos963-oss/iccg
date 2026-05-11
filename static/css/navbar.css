@@ -52,13 +52,17 @@
 
 /* ================= DROPDOWN ================= */
 
+.dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
     position: absolute;
-    top: 120%;
+    top: 100%;
     left: 0;
 
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px); /* 🔥 efecto moderno */
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
     border-radius: 12px;
@@ -73,9 +77,10 @@
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none;
+
     transition: 0.3s ease;
 
-    z-index: 2000; /* 🔥 SOLUCIÓN CLAVE */
+    z-index: 2000;
 }
 
 .dropdown-menu li {
@@ -87,8 +92,9 @@
     font-size: 14px;
 }
 
-/* HOVER DESKTOP */
-.dropdown:hover .dropdown-menu {
+/* 🔥 Hover más estable */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
